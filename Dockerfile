@@ -9,7 +9,7 @@ WORKDIR /usr/src/certified-asterisk-13.1-cert2/contrib/scripts
 RUN ./install_prereq install && ./install_prereq install-unpackaged && ./get_mp3_source.sh
 
 WORKDIR /usr/src/certified-asterisk-13.1-cert2
-RUN ./configure CFLAGS='-g -O2' --libdir=/usr/lib64 && make && make install && make samples
+RUN ./configure CFLAGS='-g -O2' --libdir=/usr/lib64 && make && make install && make samples && yum -y clean all
 
 WORKDIR /root
 CMD ["/usr/sbin/asterisk", "-vvvvvvv"]
